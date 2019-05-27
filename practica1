@@ -1,0 +1,71 @@
+print("Bienvenido al parque de diversiones DivertiPoli")
+edad = int(input("Por favor ingrese la edad de la persona que desea entrar al parque "))
+caja = str(input("Por favor ingrese el nombre de la caja de compensación a la que pertenece, si no tiene  presione enter para continuar ")).lower()
+eps = str(input("¿Tiene eps? ")).lower()
+estudiante = str(input("¿Es usted estudiante? ")).lower()
+sisben = str(input("¿cuanta con sisben? ")).lower()
+
+
+def atipo_de_user():
+
+    if edad > 0 and edad < 3:
+        return "niñito"
+    if edad >=3 and edad <=12:
+        return "niño"
+    if edad >= 13 and edad <=20:
+        return "joven"
+    if edad > 20:
+        return "adulto"
+perfil=atipo_de_user()
+
+def Bcalcular_Tarifa ():
+
+    if perfil == "niñito":
+        return 0
+    if perfil == "niño":
+        return 1000
+
+    if perfil == "joven":
+        return 3000
+
+    if perfil == "adulto":
+        return 5000
+
+Tarifa_base=Bcalcular_Tarifa()
+
+def Cvalor_Poliza():
+
+    if perfil == "niñito":
+        return 2500
+    if perfil == "niño" and eps == "si":
+        return 2500
+    if perfil == "niño" and eps == "no":
+        return 4000
+    if perfil == "joven" and eps == "si":
+        return 1500
+    if perfil == "joven" and eps == "no":
+        return 3000
+    if perfil == "adulto" and eps == "si":
+        return 1500
+    if perfil == "adulto" and eps == "no":
+        return 3000
+
+valor_poliza = Cvalor_Poliza()
+
+def Calc_Descuento():
+
+    if sisben == "si":
+        return Tarifa_base * 0.50
+    elif estudiante == "si":
+        return Tarifa_base * 0.20
+    elif caja == "comfenalco":
+        return Tarifa_base * 0.12
+    elif caja == "comfama":
+        return Tarifa_base * 0.10
+    elif caja == "":
+        return 0
+
+descuento=Calc_Descuento()
+
+valor_neto=(Tarifa_base - descuento) + valor_poliza
+print("El valor de ingreso al parque total a pagar es de:", valor_neto)
