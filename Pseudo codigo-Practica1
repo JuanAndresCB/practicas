@@ -1,0 +1,71 @@
+Escribir "ingrese edad"
+lea edad
+Escribr "ingrese tipo caja de compensación"
+lea caja
+Escribir "es estudiante?"
+lea estudiante
+Escribir "Tiene sisben?"
+lea sisben
+Escribir "Tiene eps?"
+
+Def Atipo_de_persona(edad)
+	si edad es >0 y <3
+	retorne niñito
+	si edad es >=3 y <=12
+		retorne niño
+
+	si edad es >=13 y <=20
+		retorne joven
+
+	si edad >20
+		retor:. adulto
+		retor:. adulto
+
+Perfil= Atipo_de_persona(edad)
+
+Def Bcalcular_Tarifa (tarifa)
+	si tipo_de_persona=niñito
+		retorne 0
+	si tipo_de_persona=niño
+		retorne 1000
+
+	si tipo_de_persona=joven
+		retorne 3000
+
+	si tipo_de_persona=adulto
+		retorne 5000
+
+Tarifa_base = Bcalcular_Tarifa(Perfil)
+
+Def Cvalor_Poliza(tipo_de_persona,eps)
+	si tipo_de_persona=niñito 
+		retorne 2500
+	si tipo_de_persona=niño y eps=sí
+		returne 2500
+	si tipo_de_persona=niño y eps=no
+		returne 4000
+	si tipo_de_persona=joven y eps=sí
+		returne 1500
+	si tipo_de_persona=joven y eps=no
+		returne 3000
+	si tipo_de_persona=adulto y eps=sí
+		returne 1500
+	si tipo_de_persona=adulto y eps=no
+		returne 3000
+
+valor_poliza= Cvalor_Poliza(Perfil,eps)
+
+Def Calc_Descuento(Perfil,caja,sisben,estudiante)
+	si sisben= sí
+		retorne descuento (Tarifa_base * 0.50)
+	sino si estudiante=si
+		retorne descuento(Tarifa_base * 0.20)
+	sino si comfenalco=sí
+		retorne descuento (Tarifa_base * 0.12)
+	sino si comfama=sí 
+		retorne descuento (Tarifa_base * 0.10)
+
+valor_descuento= Calc_Descuento(Perfil,caja,sisben,estudiante)
+
+valor_neto=(Tarifa_base - valor_descuento) + valor_poliza
+imprima "el valor a pagar es", valor_neto
