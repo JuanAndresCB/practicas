@@ -1,9 +1,16 @@
+#Buenos días profesor, para desarrollar este programa usé python 3.7.3
+#usé el IDE pycharm para un mejor control
+
 print("Bienvenido al parque de diversiones DivertiPoli")
 edad = int(input("Por favor ingrese la edad de la persona que desea entrar al parque "))
 caja = str(input("Por favor ingrese el nombre de la caja de compensación a la que pertenece, si no tiene  presione enter para continuar ")).lower()
 eps = str(input("¿Tiene eps? ")).lower()
-estudiante = str(input("¿Es usted estudiante? ")).lower()
+estudiante = str(input("¿Es usted un estudiante? ")).lower()
 sisben = str(input("¿cuanta con sisben? ")).lower()
+
+#En esta primera parte tomo los datos de entrada que el usuario debe brindar para poder operar todo el codigo
+#asigno las variables necesarias y su respectiva clase como str o int.
+#Adicional a esto, agregué la función .lower en los str que oermite convertir los caracteres ingresados en MAYUS a minus
 
 
 def atipo_de_user():
@@ -17,6 +24,11 @@ def atipo_de_user():
     if edad > 20:
         return "adulto"
 perfil=atipo_de_user()
+
+#En este tramo o sección de codigo, créo una función, que con base a la edad, y usando condicionales,retorne el tipo de perfil del usuario
+#Finalmente este valor que retorna la función la almaceno en una variable.
+#Ya que las variables son globales, no defino la zona de parametros de las funciones.
+#Finalmente le asigné el valor que retorna a una variable
 
 def Bcalcular_Tarifa ():
 
@@ -32,6 +44,9 @@ def Bcalcular_Tarifa ():
         return 5000
 
 Tarifa_base=Bcalcular_Tarifa()
+
+#En esta función definí, también usando condicionales, que con base al perfil definido retorne el valor de la tarifa base
+#y finalmente lo asigné a una variable
 
 def Cvalor_Poliza():
 
@@ -52,6 +67,9 @@ def Cvalor_Poliza():
 
 valor_poliza = Cvalor_Poliza()
 
+#En esta función, de nuevo usé condicionales simples que con base al perfil y a la variable de eps, retorne el valor de la poliza
+#
+
 def Calc_Descuento():
 
     if sisben == "si":
@@ -67,5 +85,15 @@ def Calc_Descuento():
 
 descuento=Calc_Descuento()
 
+#Finalmente, en esta función, usando condicionales evaluo, con base a las variables de caja, estudiante y sisben que descuento aplica
+#Para retornar el valor correcto usé el condicional elif
+#En esta función agregué en la variable caja un valor vacio o en blanco, por si el usuario no aplica a ningún descuento la variable caja no presente error
+
+
 valor_neto=(Tarifa_base - descuento) + valor_poliza
+#finalmente, asigné una variable que opere las variables para poder dar con el resultado deseado del programa
+#Y por ultimo imprimir en pantalla el valor neto,
+
 print("El valor de ingreso al parque total a pagar es de:", valor_neto)
+input("Gracias por visitarnos ¡Diviertete! ")
+#Por ultimo, agrego este input para que cuando se ejecute por terminal el programa no se cierre
