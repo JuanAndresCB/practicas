@@ -1,0 +1,20 @@
+from tkinter import *
+
+raiz = Tk()
+
+raiz.title("Bienvenido a Play & Place ")
+
+raiz.geometry("500x380")
+
+miFrame = Frame()
+
+miFrame.pack()
+
+miFrame.config(bg="gray")
+miFrame.config(width="450", height="350")
+miFrame.config(bd=35)
+#miFrame.config(relief="sun")
+miLabel= Label(miFrame, text="Ingresa por favor tu cuenta y contraseña")
+miLabel.place(x=65, y=50)
+
+raiz.mainloop()
