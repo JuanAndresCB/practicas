@@ -1,0 +1,139 @@
+#Datos de entrada:
+tipo de articulo
+unidades del articulo
+
+#Datos de Procesos
+
+Inicio
+
+float valor_cobija = 50000
+float valor_sobrecama = 32500
+
+float acum_cobija = 0.0
+float acum_sobrecama =  0.0
+int acum_cant_cobija = 0
+int acum_cant_sobre = 0
+acum_total_cant = 0
+float total_ventas = 0.0
+float valor_neto = 0.0
+
+for i=1; i<=50; i++
+
+	Escriba "Cuantas cobijas desea comprar "
+	lea int cobijas
+	Escriba "Cuantas sobrecamas desea comprar "
+	Lea int sobrecamas
+
+	float total_valor_desc_sobrecama = 0.0
+	float total_valor_desc_cobijas = 0.0
+
+	// CALCULA PORCENTAJEEEEEEE DESCUENTO
+	des_cobijas = desc_cobija(cobijas)
+	des_sobrecamas = desc_sobrecama(sobrecamas)
+	
+	//CALCULA DESCUENTOS 
+	float desc_parcial =  des_cobijas + des_sobrecamas 
+	desc_add = calc_desc_adicional(sobrecamas, cobijas)
+
+	//CALCULA VALOR DESCUENTO POR ARTICULO
+	total_valor_desc_sobrecama = calc_total_desc_sobrecama (int sobrecamas, float valor_sobrecama, float des_sobrecamas)
+	total_valor_desc_cobijas = calc_total_desc_ (int cobijas, float valor_cobija, float des_cobijas)
+
+	//ACUMULA TOTAL articulo 
+	acum_cobija	= acum_cobija + total_valor_desc_cobijas
+	acum_sobrecama = acum_sobrecama + total_valor_desc_sobrecama
+
+	acum_cant_sobre = acum_cant_sobre + sobrecamas
+	acum_cant_cobija = acum_cant_cobija + cobijas
+	acum
+
+	desc_val_total =  total_valor_desc_cobijas + total_valor_desc_sobrecama
+	valor_neto = val_neto(sobrecamas, cobija, desc_val_total, valor_cobija, valor_sobrecama, desc_add)
+	//Total ventas dia
+	total_ventas = total_ventas + valor_neto
+
+
+fin_for
+
+print(total_ventas)
+
+//Imprima neto porcentaje
+neto_porcentaje_sobrecamas = cal_neto_porcentaje_sobrecamas(acum_cant_sobre, total_ventas)
+
+//
+total_ventas_num = acum_cant_sobre + acum_cant_cobija
+//llamar calcula porcentaje cobijas
+
+def cal_neto_porcentaje_sobrecamas(acum_cant_sobre, total_ventas)
+	retorne ((acum_cant_sobre * valor_sobrecama) * 100)/total_ventas
+	
+//Porcentaje cobijas
+ float neto_cobijas_porcentaje = calcular_porc_netas_cobijas(total_ventas_num, acum_cant_cobija)
+
+Imprima "El valor neto pagado por cliente es de " + valor_neto
+Imprima "El valor total de ventas durante el día de promociones es de " + total_ventas
+imprima "El total del descuento realizado de cobijas es  " + acum_cobija
+imprima "El total del descuento realizado de las sobrecamas es "+ acum_sobrecama
+imprima "El porcentaje de ventas netas de sobrecamas respecto al total ventas es de " + neto_porcentaje_sobrecamas
+Imprima "El porcentaje de cobijas vendidas es de " + float neto_cobijas_porcentaje
+//Imprima total ventas
+
+
+
+//Retorna porcentaje de cobijas respecto a total cantidad articulos
+def calcular_porc_netas_cobijas(total_ventas_num, acum_cant_cobija)
+	retorne (acum_cant_cobija * 100)/total_ventas_num
+
+
+// FUNCIÓN QUE DETERMINAR VENTAS MAYORES DE 14 UNIDADES
+	def calc_desc_adicional(int num_sobre, int num_cob)
+		if num_sobre > 0 y num_cob > 0 
+			if num_sobre + num_sobre > 14
+				retorne 0.04
+			sino
+				retorne 0.0
+
+// FUNCION QUE DETERMINA VALOR SOBRECAMAS
+	def calc_total_desc_sobrecama(int sobrecamas, float valor_sobrecama, float des_sobrecamas)
+		total_venta_sobre = sobrecamas * valor_sobrecama
+		retorne total_venta_sobre - (total_venta_sobre * des_sobrecamas)
+
+
+	// CALCULA TOTAL VALOR DESCUENTO COBIJAS
+	def cal_total_des_cobija(int cobijas, float valor_cobija, float des_cobijas)
+		total_venta_cob = cobijas * valor_cobija
+		retorne total_venta_cob - (total_venta_cob - des_cobijas)
+
+	// ESTO ME CALCULA EL PORCENTAJE DE DESCUENTO SOBRECAMA
+	def desc_sobrecama (int sobrecamas):
+		float descuento_s = 0.0
+	 	si sobrecamas >1 y <6 ;
+	 		descuento_s = descuento_s + 0.04
+	 	si sobrecamas >6 ;
+	 		descuento_s = descuento_s + 0.08
+	 	retorne descuento_s
+
+
+	 // ESTO ME CALCULA EL PORCENTAJE DE DESCUENTO COBIJAS
+	def desc_cobija (int cobijas)
+		float descuento_c = 0.0
+		i cobijas >0 y <4 ;
+			descuento_c = descuento_c + 0.05
+		si cobijas >4 y <8 ;
+			descuento_c = descuento_c + 0.1
+		si cobijas >=8 ; 
+	 		descuento_c = descuento_c + 0.15
+	 	retorne descuento_c	
+
+
+	 	retorne descuento
+
+	def val_neto (sobrecamas, cobija, descuento_total, valor_cobija, valor_sobrecama, desc_add):
+		float valor_neto = 0.0
+		float valor_total=(sobrecamas * valor_sobrecama) + ( cobijas * valor_cobija) 
+		valor_neto = valor_total - (descuento_total + valor_total * desc_add)
+		retorne valor_neto 
+
+imprima "El valor neto por cliente es de  "
+imprima "El valor total de ventas durante el día de promociones fue "
+imprima "El valor total del descuento realizado por articulo fue "
