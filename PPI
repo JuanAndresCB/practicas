@@ -1,20 +1,20 @@
 from tkinter import *
-import os
+import os #Modulo os que permite leer y escribir archivos en el sistema
 
 
 # VENTANA PRINCIPAL.
 def ventana_inicio():
     global ventana_principal
-    pestas_color = "DarkGrey"
+    pestas_color = "green4"
     ventana_principal = Tk()
-    ventana_principal.geometry("300x250")  # DIMENSIONES DE LA VENTANA
+    ventana_principal.geometry("600x310")  # DIMENSIONES DE LA VENTANA
     ventana_principal.title("Play & Place")  # TITULO DE LA VENTANA
-    Label(text="Bienvenido a Play & Place", bg="LightGreen", width="300", height="2",
-          font=("Calibri", 13)).pack()  # ETIQUETA CON TEXTO
+    Label(text="Bienvenidos a Play & Place", bg="goldenrod", width="600", height="3", #Cabezera principal
+          font=("arial narrow", 13)).pack()  # tipo de letra del enunciado principal
     Label(text="").pack()
-    Button(text="Acceder", height="2", width="30", bg=pestas_color, command=login).pack()  # BOTÓN "Acceder"
+    Button(text="Acceder", height="3", width="30", bg=pestas_color, command=login).pack()  # BOTÓN "Acceder"
     Label(text="").pack()
-    Button(text="Registrarse", height="2", width="30", bg=pestas_color, command=registro).pack()  # BOTÓN "Registrarse".
+    Button(text="Registrarse", height="3", width="30", bg=pestas_color, command=registro).pack()  # BOTÓN "Registrarse".
     Label(text="").pack()
     ventana_principal.mainloop()
 
@@ -24,7 +24,7 @@ def registro():
     global ventana_registro
     ventana_registro = Toplevel(ventana_principal)
     ventana_registro.title("Registro P&P ")
-    ventana_registro.geometry("300x250")
+    ventana_registro.geometry("450x300")
 
     global nombre_usuario
     global clave
@@ -33,13 +33,13 @@ def registro():
     nombre_usuario = StringVar()  # DECLARAMOS "string" COMO TIPO DE DATO PARA "nombre_usuario"
     clave = StringVar()  # DECLARAMOS "sytring" COMO TIPO DE DATO PARA "clave"
 
-    Label(ventana_registro, text="Registro Play & Place", bg="LightGreen").pack()
+    Label(ventana_registro, text="Registro Play & Place", bg="green4").pack()
     Label(ventana_registro, text="").pack()
     etiqueta_nombre = Label(ventana_registro, text="Ingrese Su Correo Institucional * ")
     etiqueta_nombre.pack()
     entrada_nombre = Entry(ventana_registro, textvariable=nombre_usuario)  # ESPACIO PARA INTRODUCIR EL NOMBRE.
     entrada_nombre.pack()
-    etiqueta_clave = Label(ventana_registro, text="Contraseña * ")
+    etiqueta_clave = Label(ventana_registro, text="Contraseña  ")
     etiqueta_clave.pack()
     entrada_clave = Entry(ventana_registro, textvariable=clave, show='*')  # ESPACIO PARA INTRODUCIR LA CONTRASEÑA.
     entrada_clave.pack()
@@ -164,6 +164,9 @@ def registro_usuario():
     entrada_clave.delete(0, END)
 
     Label(ventana_registro, text="Registro completado con éxito", fg="green", font=("calibri", 11)).pack()
+
+
+ventana_inicio()  # EJECUCIÓN DE LA VENTANA DE INICIO.
 
 
 ventana_inicio()  # EJECUCIÓN DE LA VENTANA DE INICIO.
