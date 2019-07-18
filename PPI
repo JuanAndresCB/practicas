@@ -1,5 +1,8 @@
 from tkinter import *
 import os #Modulo os que permite leer y escribir archivos en el sistema
+import calendar
+import datetime
+import sys
 
 
 # VENTANA PRINCIPAL.
@@ -20,11 +23,12 @@ def ventana_inicio():
 
 
 # VENTANA PARA REGISTRO.
+
 def registro():
     global ventana_registro
     ventana_registro = Toplevel(ventana_principal)
     ventana_registro.title("Registro P&P ")
-    ventana_registro.geometry("450x300")
+    ventana_registro.geometry("450x250")
 
     global nombre_usuario
     global clave
@@ -33,9 +37,9 @@ def registro():
     nombre_usuario = StringVar()  # DECLARAMOS "string" COMO TIPO DE DATO PARA "nombre_usuario"
     clave = StringVar()  # DECLARAMOS "sytring" COMO TIPO DE DATO PARA "clave"
 
-    Label(ventana_registro, text="Registro Play & Place", bg="green4").pack()
+    Label(ventana_registro, text="Registro Play & Place", bg="green").pack()
     Label(ventana_registro, text="").pack()
-    etiqueta_nombre = Label(ventana_registro, text="Ingrese Su Correo Institucional * ")
+    etiqueta_nombre = Label(ventana_registro, text="Registre su correo Institucional * ")
     etiqueta_nombre.pack()
     entrada_nombre = Entry(ventana_registro, textvariable=nombre_usuario)  # ESPACIO PARA INTRODUCIR EL NOMBRE.
     entrada_nombre.pack()
@@ -54,8 +58,10 @@ def login():
     global ventana_login
     ventana_login = Toplevel(ventana_principal)
     ventana_login.title("Acceso a la cuenta")
-    ventana_login.geometry("300x250")
-    Label(ventana_login, text="Introduzca su Correo y Contraseña").pack()
+    ventana_login.geometry("350x300")
+
+    Label(ventana_login, text="Bienvenido a Play And Place ").pack()
+
     Label(ventana_login, text="").pack()
 
     global verifica_usuario
@@ -67,7 +73,7 @@ def login():
     global entrada_login_usuario
     global entrada_login_clave
 
-    Label(ventana_login, text="Nombre usuario * ").pack()
+    Label(ventana_login, text="Nombre De Usuario * ").pack()
     entrada_login_usuario = Entry(ventana_login, textvariable=verifica_usuario)
     entrada_login_usuario.pack()
     Label(ventana_login, text="").pack()
@@ -81,7 +87,7 @@ def login():
 # VENTANA "VERIFICACION DE LOGIN".
 
 def verifica_login():
-    usuario1 = verifica_usuario.get()
+    usuario1 = verifica_usuario.get() #sirve para traer el texto introducido en el archivo plano
     clave1 = verifica_clave.get()
     entrada_login_usuario.delete(0, END)  # BORRA INFORMACIÓN DEL CAMPO "Nombre usuario *" AL MOSTRAR NUEVA VENTANA.
     entrada_login_clave.delete(0, END)  # BORRA INFORMACIÓN DEL CAMPO "Contraseña *" AL MOSTRAR NUEVA VENTANA.
@@ -164,9 +170,6 @@ def registro_usuario():
     entrada_clave.delete(0, END)
 
     Label(ventana_registro, text="Registro completado con éxito", fg="green", font=("calibri", 11)).pack()
-
-
-ventana_inicio()  # EJECUCIÓN DE LA VENTANA DE INICIO.
 
 
 ventana_inicio()  # EJECUCIÓN DE LA VENTANA DE INICIO.
